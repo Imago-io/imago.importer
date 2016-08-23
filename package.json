@@ -1,0 +1,30 @@
+{
+  "name": "imago.importer",
+  "version": "0.0.1",
+  "description": "import a local file tree into imago.io",
+  "main": "index.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "coffee -w src/import.coffee"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Imago-io/imago.importer.git"
+  },
+  "keywords": [
+    "imago.io"
+  ],
+  "author": "Christof Haemmerle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Imago-io/imago.importer/issues"
+  },
+  "homepage": "https://github.com/Imago-io/imago.importer#readme",
+  "dependencies": {
+    "async": "^2.0.1",
+    "lodash": "^4.15.0",
+    "path": "^0.12.7",
+    "restler": "^3.4.0",
+    "walkdir": "0.0.11"
+  }
+}
