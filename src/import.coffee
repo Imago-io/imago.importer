@@ -1,6 +1,6 @@
 
 walk  = require('walkdir')
-async = require('async')
+# async = require('async')
 p  = require('path')
 
 
@@ -28,25 +28,24 @@ class Importer
     # emitter.on 'end', -> console.log 'end'
 
     walk.sync 'filestore', no_return: true, (path,stat) ->
-      # return if p.basename(path) is '.DS_Store'
-      # return unless p.basename(path).match(acceptFileTypes)
-      if stat.size is 0
-        console.log 'direcotyr', path, stat.size
-      else
-        console.log 'file', path, stat.size
+
+      return if p.basename(path)[0] is '.'
+      return if stat.size is 0
+      return unless p.basename(path).match acceptFileTypes
+
+      # if stat.isDirectory()
+      # create collection
+
+      console.log path
 
 
+  getSettings: ->
+    # gret the settings for the tenant
 
 
+  createAsset: (type, name) ->
 
-
-  collectFiles: ->
-    # for file in @files
-    #   @upload file
-
-
-  createAsset: ->
-
+    # creates the asset
     # post to https://api.imago.io/api/assets
     #
     # [{
@@ -60,43 +59,13 @@ class Importer
     # }]
 
 
+  getUploadUrl: ->
+    # post to https://api.imago.io/api/assets/getUploadUrl
+
+
   uploadAsset: ->
-    # ext      = pathMod.extname(@data.name).toLowerCase()
-    # filename = "#{@tenant}|#{@data.uuid}#{ext}"
-
-    # # @uploadToGs 'tempbinaries', filename, ->
-    # mimetype = @getMimeType filename
-    # @data.features or= []
-
-    # # console.log 'uploadDone name', @data.name
-    # cloudVision = if 'imageSense' in @data.features then true else false
-
-    # jsondata =
-    #   namespace   : @tenant
-    #   uuid        : @data.uuid
-    #   cloudVision : cloudVision
-    #   filename    : @data.name
-    #   gs_path     : filename
-    #   bucket      : 'tempbinaries'
-    #   debug       : config.DEBUG
-    #   type        : mimetype
-
-
-    # # console.log 'data...cloudVision', @tenant, jsondata.cloudVision
-
-    # url = utils.extractorUrl(@tenant)
-
-    # # console.log 'extractorUrl', url
-    # restler.postJson(url, jsondata).on 'complete', (respdata, resp) =>
-
-    #   # console.log 'respdata', respdata, resp
-    #   if resp.statusCode isnt 200
-    #     msg = "call to extractor (uploadAsset) statusCode: #{resp.statusCode} <br><br>
-    #           #{JSON.stringify(jsondata)} <br><br> response: #{respdata}"
-    #     utils.log(msg, @tenant)
-    #   # console.log '.....', respdata
-    #   @response()
-
+    # http upload the asset via upload url to temp binaries.
+    # on done hit api to start post process with the features
 
 new Importer
 
