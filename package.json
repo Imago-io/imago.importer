@@ -21,10 +21,13 @@
   },
   "homepage": "https://github.com/Imago-io/imago.importer#readme",
   "dependencies": {
-    "async": "^2.0.1",
-    "lodash": "^4.15.0",
-    "path": "^0.12.7",
-    "restler": "^3.4.0",
-    "walkdir": "0.0.11"
+    "async"         : "^2.0.1",
+    "lodash"        : "^4.15.0",
+    "path"          : "^0.12.7",
+    "restler"       : "^3.4.0",
+    "walk"          : "2.3.9",
+    "normalizeName" : "0.4.0",
+    "restler"       : "3.4.0"
+
   }
 }
